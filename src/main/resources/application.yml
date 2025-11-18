@@ -1,0 +1,30 @@
+spring:
+  application:
+    name: iot-platform
+  data:
+    mongodb:
+      uri: mongodb://mongo:mongoPass123!@localhost:27017/iot_timeseries?authSource=admin
+  datasource:
+    url: jdbc:mysql://localhost:3306/iot_app?useSSL=false&serverTimezone=UTC&characterEncoding=UTF-8
+    username: iot_user
+    password: UserPass123!
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+
+server:
+  port: 8080
+
+mqtt:
+  broker-url: tcp://localhost:1883
+  client-id: iot-platform
+  topics:
+    - telemetry/+/data
+    - telemetry/+/event
+  username: ""
+  password: ""
